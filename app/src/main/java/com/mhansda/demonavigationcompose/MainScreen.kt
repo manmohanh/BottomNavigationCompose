@@ -59,7 +59,10 @@ fun RowScope.AddItem(
         } == true,
         unselectedContentColor = LocalContentColor.current.copy(alpha = ContentAlpha.medium),
         onClick = {
-            navController.navigate(screens.route)
+            navController.navigate(screens.route){
+                popUpTo(navController.graph.startDestinationId)
+                launchSingleTop = true
+            }
         }
     )
 }
